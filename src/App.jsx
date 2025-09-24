@@ -1,35 +1,38 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-
+import { Frutas } from './componentes/Frutas'
+import { ListaAnimales } from './Componentes/ListaAnimales'
+import { DiasdeSemana } from './componentes/DiasdeSemana'
 function App() {
-  const [count, setCount] = useState(0)
-
+    const animales = [{nombre: "gato", imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJAPquPYDGaYWDWNIr6dJckaCwIZ7nVjwObg&s"},
+                      {nombre: "perro", imagen: "https://png.pngtree.com/png-vector/20250111/ourmid/pngtree-golden-retriever-dog-pictures-png-image_15147078.png"},
+                       {nombre: "Conejo", imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaiA7D1SqLmXt2Y8iwpcEMGXhYWPs4c4_Ujg&s"},
+    ]
+    const frutas = ["Platano", "Naranja", "Manzana"]
+    
+    const dias = ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"]
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <h1>Lista de Animales</h1>
+      {animales.map(function(animal){
+      return <ListaAnimales imagen = {animal.imagen} nombre={animal.nombre}/>
+        })}
+  
+      <h2>Lista frutas</h2>
+      <ul>
+         {frutas.map(function(fruta){
+            return <Frutas nombre = {fruta}/>
+         })}
+      </ul>
+
+      <h2>Dias de la semana</h2>
+      <ul>
+        {dias.map(function(dia){
+          return <DiasdeSemana nombre = {dia}/>
+        })}
+      </ul>
     </>
   )
 }
 
 export default App
+
